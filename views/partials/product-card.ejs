@@ -1,0 +1,16 @@
+<article class="product-card" data-price="<%= product.price %>" style="--card-index:<%= index %>">
+  <div class="product-image-wrap">
+    <img class="product-image" src="https://images.unsplash.com/<%= product.image %>?auto=format&fit=crop&w=900&q=80" alt="<%= product.name %> in <%= product.color %>" loading="lazy">
+    <% if (product.tag) { %><span class="product-tag"><%= product.tag %></span><% } %>
+    <form class="add-form" action="/cart/<%= product.id %>" method="post">
+      <input type="hidden" name="count" value="<%= cartCount %>">
+      <input type="hidden" name="category" value="<%= selectedCategory %>">
+      <button class="add-button" type="submit">Add to bag <span>+</span></button>
+    </form>
+    <button class="favorite-button" aria-label="Save <%= product.name %>" aria-pressed="false" type="button">♡</button>
+  </div>
+  <div class="product-info">
+    <div><h3><%= product.name %></h3><p><%= product.color %></p></div>
+    <span class="price">$<%= product.price %></span>
+  </div>
+</article>

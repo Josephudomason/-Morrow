@@ -1,0 +1,32 @@
+<section class="shop-section" id="shop">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Good things, thoughtfully made</p>
+      <h2>Find your <em>everyday.</em></h2>
+    </div>
+    <p class="product-count">Showing <%= products.length %> pieces</p>
+  </div>
+  <div class="shop-toolbar">
+    <nav class="filters" aria-label="Filter by category">
+      <% categories.forEach((category) => { %>
+        <a href="/?category=<%= encodeURIComponent(category) %><%= search ? `&q=${encodeURIComponent(search)}` : '' %>" class="filter <%= selectedCategory === category ? 'selected' : '' %>"><%= category %></a>
+      <% }) %>
+    </nav>
+    <button class="sort-button" id="sort-button">Featured <span>⌄</span></button>
+  </div>
+  <% if (products.length) { %>
+    <div class="product-grid" id="product-grid">
+      <% products.forEach((product, index) => { %>
+        <%- include('product-card', { product, index, selectedCategory, cartCount }) %>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <div class="empty-state">
+      <span>✳</span>
+      <h3>No pieces found</h3>
+      <p>Try a different search or explore the full collection.</p>
+      <a class="text-link" href="/">View everything ↗</a>
+    </div>
+  <% } %>
+  <div class="view-all-wrap"><a href="/?category=All" class="button button-outline">View all pieces <span>↗</span></a></div>
+</section>

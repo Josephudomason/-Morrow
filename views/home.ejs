@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <%- include('partials/head') %>
+  <body>
+    <%- include('partials/header', { search, cartCount }) %>
+    <main>
+      <%- include('partials/hero') %>
+      <%- include('partials/intro') %>
+      <%- include('partials/shop', { products, categories, selectedCategory, search, cartCount }) %>
+      <%- include('partials/quote') %>
+      <%- include('partials/newsletter') %>
+    </main>
+    <%- include('partials/footer') %>
+  </body>
+</html>
